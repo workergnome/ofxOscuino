@@ -1,6 +1,6 @@
-#include "SLIPSerial.h"
+#include "ofxOscuino.h"
 
-void SLIPSerial::setup(ofSerial &_serial, int serverPort, int clientPort) {
+void ofxOscuino::setup(ofSerial &_serial, int serverPort, int clientPort) {
   serial = _serial;
   udpServer.Create();
   udpServer.Connect("127.0.0.1",serverPort);
@@ -17,8 +17,7 @@ void SLIPSerial::setup(ofSerial &_serial, int serverPort, int clientPort) {
   }
 }
 
-
-void SLIPSerial::slipDecode(char incoming) {
+void ofxOscuino::slipDecode(char incoming) {
   char previous = prevByte;
   prevByte = incoming;
   //if the previous was the escape char
@@ -41,7 +40,7 @@ void SLIPSerial::slipDecode(char incoming) {
   }
 }
 
-void SLIPSerial::slipEncode(char incoming) {
+void ofxOscuino::slipEncode(char incoming) {
   if(incoming == EOT){
     serial.writeByte(SLIP_ESC);
     serial.writeByte(SLIP_ESC_END);
@@ -53,12 +52,12 @@ void SLIPSerial::slipEncode(char incoming) {
   }
 }
 
-void SLIPSerial::serialSendToUDP() {
+void ofxOscuino::serialSendToUDP() {
   udpServer.Send(serialBuffer.data(),serialBuffer.size());
   serialBuffer.clear();
 }
 
-bool SLIPSerial::checkForData() {
+bool ofxOscuino::update() {
   //handle the serial port
   char myByte;
   myByte = serial.readByte();
@@ -67,7 +66,7 @@ bool SLIPSerial::checkForData() {
       slipDecode(myByte);
     }
       else {
-        ofLog(OF_LOG_ERROR) << "Whoops!  USB is disconnected.";
+        ofLog(OF_LOG_ERROR) << "Whoops!  USB might be disconnected.";
         return false;
       }
     myByte = serial.readByte();

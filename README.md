@@ -1,23 +1,37 @@
-ofxAddonTemplate
-================
+# ofxOscuino
+=====================================
 
-OpenFrameworks addon template for easier development of structurally correct addons.
+Introduction
+------------
 
-This template aids you as an addon author in creating an addon in a "proper" way. Doing this enables the openFrameworks community to easily use your addon, and having addons adhere to an established structure makes it easier for the openFrameworks developers to create features around contributed addons, like the addons index at ofxaddons.com.
+This is a quick and dirty library for using the [Oscuino](http://cnmat.berkeley.edu/oscuino) library for OSC on Arduino.  It works as a bridge between the serial port and the UDP libraries.
 
-Download
---------
-The template contains all you need to start developing your addon. Download the template using the Download button on the right side of the github page. Unzip, rename and copy it to your addons folder.
-**PLEASE DON'T FORK** the addon template repo if you plan on creating your own addon, this will lead to confusion on the Github inheritance/forking graph, and you will unnecessarily have this repository's history in your own git repo.
+License
+------------
 
-Further Steps
--------------
-`readme_author.md` contains instructions and explanations for you.
-`readme_deploy.md` is filled with a template for an informative README file you might want to use with your addon.
+This addon is distributed under the [MIT License](https://en.wikipedia.org/wiki/MIT_License).
 
-Before announcing your addon to the world, you should remove this file (`readme.md`) and the author instructions, and rename `readme_deploy.md` to `README.md`.
-Also, if you have special instructions which people should see when submitting a pull request or open an issue in your addon repository, add a `CONTRIBUTING.md` file at the root of your repository. For more details, see https://github.com/blog/1184-contributing-guidelines
+Installation
+------------
+Any steps necessary to install your addon. Optimally, this means just dropping the folder into the `openFrameworks/addons/` folder.
 
-This template reflects the help text found at http://ofxaddons.com/howto, and will be updated from time to time by the OF developers.
+Dependencies
+------------
 
-Thanks for listening, and happy coding!
+This addon uses the serial library from `ofxNetwork`.
+The example also uses `ofxOsc`, obviously, though the library doesn't depend on it.
+
+Compatibility
+------------
+This has been tested with Open Frameworks 8.4 on OSX.
+
+Known issues
+------------
+Any specific (and long-living) issues/limitations you want to mention? For bugs, etc. you should use the issue tracker of your addon's repository
+
+Version history
+------------
+It make sense to include a version history here (newest releases first), describing new features and changes to the addon. Use [git tags](http://learn.github.com/p/tagging.html) to mark release points in your repo, too!
+
+### Version 0.1 (April 20, 2015):
+Initial release.
